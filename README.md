@@ -11,6 +11,18 @@ This system integrates multiple AI services to create a seamless voice chat expe
 - **Voice Activity Detection**: Silero VAD for conversation flow
 - **Authentication**: Integrated with existing beauty service
 
+## 🚀 Quick Start for Developers
+
+**Ready to use!** The production endpoint is live at:
+```
+https://the-ultimate-beauty-318968771808.us-west2.run.app/beauty.beauty.v1.BackendService/GetLiveKitToken
+```
+
+1. **Copy the TokenService.swift code** from section below
+2. **Add LiveKit SDK** to your iOS project: `https://github.com/livekit/client-sdk-swift`
+3. **Test the connection** with any room/participant name
+4. **Start voice conversations** immediately!
+
 ## 🏗️ Architecture
 
 ```
@@ -37,8 +49,8 @@ actor TokenService {
         let participantToken: String
     }
 
-    // REPLACE WITH YOUR PRODUCTION BEAUTY SERVICE URL
-    private let tokenServerUrl: String = "https://YOUR_PRODUCTION_DOMAIN/beauty.beauty.v1.BackendService/GetLiveKitToken"
+    // Production Beauty Service URL
+    private let tokenServerUrl: String = "https://the-ultimate-beauty-318968771808.us-west2.run.app/beauty.beauty.v1.BackendService/GetLiveKitToken"
     
     func fetchConnectionDetails(roomName: String, participantName: String) async throws -> ConnectionDetails? {
         return try await fetchConnectionDetailsFromTokenServer(roomName: roomName, participantName: participantName)
@@ -202,9 +214,10 @@ go run cmd/private/server/main.go
 ## 🏭 Production Deployment
 
 ### Beauty Service Integration
-The LiveKit token generation is integrated into your existing beauty service at:
-- **Endpoint**: `/beauty.beauty.v1.BackendService/GetLiveKitToken`
+The LiveKit token generation is integrated into the production beauty service at:
+- **Endpoint**: `https://the-ultimate-beauty-318968771808.us-west2.run.app/beauty.beauty.v1.BackendService/GetLiveKitToken`
 - **Method**: POST
+- **Status**: ✅ **LIVE IN PRODUCTION**
 - **Authentication**: Uses existing beauty service authentication
 
 ### Voice Agent Deployment
